@@ -33,24 +33,37 @@
   <div class="content-wrapper">
   <div class="container">
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Caption</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Your Caption"></textarea>
-        </div>
-        
-    </div>
-    <div class="container"> 
-        <div class="row">
-            <div class="col-6">
-                <button type="button" class="btn btn-primary btn-lg">Post</button>
+        <div class="card-header">
+            <h3 class="card-title">Post new</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form role="form" action="/posts" method="POST">
+              @csrf
+            <div class="card-body">
+              <div class="form-group">
+                <label for="caption" class="form-label">Caption</label>
+                <textarea class="form-control" id="caption" name="caption" rows="3" placeholder="Enter Your Caption"></textarea>
+                @error('caption')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+              </div>
+              
             </div>
-            <div class="col-6">
-                <button type="button" class="btn btn-secondary btn-lg">Cancel</button>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <div class="row">
+                  <div class="col-6">
+                      <button type="submit" class="btn btn-primary">Post</button>
+                  </div>
+                  <div class="col-6">
+                      <a href="/posts"><button type="button" class="btn btn-secondary btn-lg">Cancel</button></a>
+                  </div>
+              </div>
             </div>
+          </form>
         </div>
-        <div class="row">
-            
-        </div>
-        
         
     </div>
   </div>

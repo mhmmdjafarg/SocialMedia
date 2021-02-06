@@ -12,23 +12,27 @@
 */
 
 Route::get('/',function(){
+    return view('welcome');
+});
+
+Route::get('/timeline',function(){
     return view('timeline');
 });
-Route::get('/login',function(){
-    return view('login');
-});
+
 Route::get('/profile',function(){
     return view('profile');
 });
 Route::get('/profile-depth',function(){
     return view('profiledepth');
 });
-Route::get('/post',function(){
-    return view('post');
-});
+// Route::get('/post',function(){
+//     return view('post');
+// });
 Route::get('/post-detail',function(){
     return view('detailpost');
 });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('posts', 'PostsController');
